@@ -1,0 +1,45 @@
+# salário de um funcionário com base em seus anos de experiência.
+
+# ANO X SALARIO Y
+
+# Definição dos dados
+
+x = [1, 2, 3, 4, 5, 6, 7, 8]  # Anos 
+y = [30, 35, 40, 45, 50, 55, 60, 70]  # Salário MIL
+
+def calcular_coeficientes(x, y):
+
+    # Calcula os coeficientes da regressão linear (β₁ e β₀). 
+    N = len(x)  # Número total de pontos
+    
+    # Somatórios necessários
+    sum_x = sum(x)  
+    sum_y = sum(y)  
+    sum_xy = sum(x[i] * y[i] for i in range(N))  
+    sum_x2 = sum(x[i] ** 2 for i in range(N))  
+
+    # Fórmulas para calcular β₁ (inclinação) e β₀ (intercepto)
+
+    beta_1 = (N * sum_xy - sum_x * sum_y) / (N * sum_x2 - sum_x ** 2)
+    beta_0 = (sum_y - beta_1 * sum_x) / N
+    
+    return beta_0, beta_1
+
+def prever_salario(beta_0, beta_1, anos_experiencia):
+
+    #Faz previsões usando a equação da reta y = β₀ + β₁x
+
+    return beta_0 + beta_1 * anos_experiencia
+
+# Calculando os coeficientes da regressão linear
+beta_0, beta_1 = calcular_coeficientes(x, y)
+
+# Exibir os resultados
+print(f"Coeficiente β₀ (intercepto): {beta_0:.2f}")
+print(f"Coeficiente β₁ (inclinação): {beta_1:.2f}")
+print(f"Equação da reta: y = {beta_0:.2f} + {beta_1:.2f}x")
+
+# Previsão para um funcionário com 9 anos de experiência
+anos_experiencia = 9
+salario_previsto = prever_salario(beta_0, beta_1, anos_experiencia)
+print(f"Para {anos_experiencia} anos de experiência, o salário previsto é R$ {salario_previsto:.2f} mil")
