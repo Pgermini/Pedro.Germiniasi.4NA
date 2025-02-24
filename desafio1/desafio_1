@@ -2,8 +2,6 @@
 
 # ANO X SALARIO Y
 
-# Definição dos dados
-
 x = [1, 2, 3, 4, 5, 6, 7, 8]  # Anos 
 y = [30, 35, 40, 45, 50, 55, 60, 70]  # Salário MIL
 
@@ -43,3 +41,4 @@ print(f"Equação da reta: y = {beta_0:.2f} + {beta_1:.2f}x")
 anos_experiencia = 9
 salario_previsto = prever_salario(beta_0, beta_1, anos_experiencia)
 print(f"Para {anos_experiencia} anos de experiência, o salário previsto é R$ {salario_previsto:.2f} mil")
+        
